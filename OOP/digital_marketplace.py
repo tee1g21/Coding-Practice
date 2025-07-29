@@ -15,8 +15,8 @@ class User:
         self.password = password
         
     def login(self, usr, pwd) -> bool:
-        if usr == self.username & pwd == self.password: 
-            if usr == "" | pwd == "": 
+        if usr == self.username and pwd == self.password: 
+            if usr == "" or pwd == "": 
                 print("Create Login")
                 return False
             else: 
@@ -28,11 +28,12 @@ class Seller(User):
 
     def __init__(self, username="", email="", password=""):
         super().__init__(username, email, password)
-        self.product_listings = {Product}
-        self.sales = {Product}
+        self.product_listings = {}
+        self.sales = {}
 
     def add_product(self, product, quantity):
-        self.product_listings[product] += quantity
+        self.product_listings[product] = self.product_listings.get(product, 0) + quantity
+
     
     def remove_product(self, product, quantity):
         current_quantity = self.product_listings[product]
@@ -44,13 +45,16 @@ class Seller(User):
     
     def view_sales(self):
         print(self.sales)
+        
+    def view_listings(self):
+        print(self.product_listings)
     
 class Buyer(User):
     
     def __init__(self, username="", email="", password=""):
         super().__init__(username, email, password)
         self.cart = Cart()
-        self.order_history = {Product}
+        self.order_history = {}
         self.balance = 0
         
     def add_to_cart(self, product, quantity):
@@ -74,9 +78,16 @@ class Buyer(User):
                 quantity = self.cart.products[product]
                 product.buy(quantity)
                 self.order_history[product] += quantity
-            
+                self.order_history[product] = self.order_history.get(product, 0) + quantity
+
             # empty cart    
             self.cart= Cart()
+        
+    def view_cart(self):
+        print(self.cart)
+        
+    def view_order_history(self):
+        print(self.order_history)
         
 class Product: 
     
@@ -85,7 +96,10 @@ class Product:
         self.price = price
         self.seller = seller
         self.sold = False
-        
+    
+    def __str__(self):
+        return f"{self.seller.username}'s {self.name}: £{self.price}"
+    
     def buy(self, quantity):
         self.sold = True
         self.seller.add_sale(self, quantity)
@@ -93,8 +107,12 @@ class Product:
 class Cart:
     
     def __init__(self):
-        self.products = {Product}
-        
+        self.products = {}
+    
+    def __str__(self):
+        return "\n".join(f"{p.name} x {q}" for p, q in self.products.items())
+
+    
     def add_product(self, product, quantity):
         self.products[product] = quantity
         
@@ -106,8 +124,23 @@ class Cart:
         total = 0
         for product in self.products:
             total += product.price * self.products[product]
-        
+        return total
 
-        
+def main(): 
     
-        
+    seller = Seller(username="Seller")
+    product = Product("Football", 10, seller)
+    seller.add_product(product, 5)
+    seller.view_listings()
+    seller.view_sales()
+    
+    buyer = Buyer(username="Buyer")
+    buyer.deposit(100)
+    buyer.add_to_cart(product, 2)
+    buyer.view_cart()
+    buyer.checkout()
+    buyer.view_order_history()
+    
+
+if __name__ == "__main__":
+    main()
