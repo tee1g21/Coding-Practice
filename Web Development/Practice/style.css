@@ -1,0 +1,58 @@
+:root {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* 1em = 20px */
+
+nav {
+  background-color: red;
+}
+
+.card {
+  box-sizing: border-box;
+  width: 100%;
+  height: fit-content;
+  border: 0.125rem solid rgb(225, 230, 238);
+  background-color: rgb(238, 241, 243); 
+  border-radius: 0.75rem;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card h1 {
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+p {
+  margin: 0;
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 100px;
+}
+
+#column1 {
+  background-color: red;
+}
+
+#column2 {
+ 
+  background-color: blue;
+}

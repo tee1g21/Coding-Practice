@@ -1,0 +1,89 @@
+:root {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.top_row {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    height: 4.5rem;
+    width: 100%;
+}
+
+.top_row button {
+    width: 7.5%;
+}
+
+.top_row button img {
+    max-width: 3rem;
+    height: 100%;
+    
+}
+
+.border_box {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    background-color: rgb(177, 238, 247);
+    box-sizing: border-box;
+    border-radius: 0.75rem;
+    border: 0.2rem solid black;
+    width:100%;
+}
+
+nav {    
+    overflow: hidden; 
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    gap: 1rem;
+    
+}
+
+nav a {
+    text-align: center;
+    font-size: 2rem;
+    color: blue;
+    text-decoration: none;
+}
+
+nav a:hover{
+    color: blueviolet;
+}
+
+.profile_card {
+    display:flex;
+    flex-direction:row;
+    width:100%;
+}
+
+.personal_description {
+    flex-grow: 2;
+    padding-left: 10%;
+    padding-top: 5%;
+    width: 66%;
+    text-align: left;
+    height: 20rem;
+}
+
+.personal_description p {
+    font-size: 1.25rem;
+}
+
+.profile_picture {
+    flex-grow: 1;
+    max-width: 30%;
+    border-radius: 100%;
+    margin: 5% 10%;
+    border: 0.3rem solid rgb(0, 225, 255);
+}
+
+.interests_card {
+    height: 30rem;
+    padding: 0 3%; 
+}
