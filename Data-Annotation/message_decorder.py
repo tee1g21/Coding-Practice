@@ -13,6 +13,7 @@ def message_decoder(url):
         grid[y][x] = char
     
     pretty_print(grid)   
+    #print(grid)
            
 def parse_google_doc(url): 
     contents = urllib.request.urlopen(url).read()
@@ -54,4 +55,4 @@ def pretty_print(grid):
         print("\r")
 
 if __name__ == "__main__":
-    message_decoder("https://docs.google.com/document/d/e/2PACX-1vTMOmshQe8YvaRXi6gEPKKlsC6UpFJSMAk4mQjLm_u1gmHdVVTaeh7nBNFBRlui0sTZ-snGwZM4DBCT/pub")
+    message_decoder("https://docs.google.com/document/d/e/2PACX-1vRPzbNQcx5UriHSbZ-9vmsTow_R6RRe7eyAU60xIF9Dlz-vaHiHNO2TKgDi7jy4ZpTpNqM7EvEcfr_p/pub")
